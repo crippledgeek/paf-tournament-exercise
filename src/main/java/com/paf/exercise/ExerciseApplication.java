@@ -1,4 +1,4 @@
-package com.paf.exercise.exercise;
+package com.paf.exercise;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
