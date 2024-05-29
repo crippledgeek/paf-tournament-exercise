@@ -1,0 +1,9 @@
+services:
+  postgres:
+    image: 'postgres:latest'
+    environment:
+      - 'POSTGRES_DB=tournaments'
+      - 'POSTGRES_PASSWORD=paf'
+      - 'POSTGRES_USER=paf'
+    ports:
+      - '5632:5432'
