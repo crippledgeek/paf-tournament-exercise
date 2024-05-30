@@ -40,7 +40,6 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<scope>annotationProcessor</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.mapstruct</groupId>
@@ -78,8 +77,7 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>21</source>
-					<target>21</target>
+					<release>${java.version}</release>
 					<!-- See https://maven.apache.org/plugins/maven-compiler-plugin/compile-mojo.html -->
 					<!-- Classpath elements to supply as annotation processor path. If specified, the compiler   -->
 					<!-- will detect annotation processors only in those classpath elements. If omitted, the     -->
