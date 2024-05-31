@@ -1,0 +1,109 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1717062836469-1
+      author: matte
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 50
+            sequenceName: player_seq
+            startValue: 1
+  - changeSet:
+      id: 1717062836469-2
+      author: matte
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 50
+            sequenceName: tournament_seq
+            startValue: 1
+  - changeSet:
+      id: 1717062836469-3
+      author: matte
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_player
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+            tableName: player
+  - changeSet:
+      id: 1717062836469-4
+      author: matte
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_player_tournaments
+                  name: player_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_player_tournaments
+                  name: tournaments_id
+                  type: BIGINT
+            tableName: player_tournaments
+  - changeSet:
+      id: 1717062836469-5
+      author: matte
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_tournament
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: reward_amount
+                  type: DECIMAL(19, 2)
+            tableName: tournament
+  - changeSet:
+      id: 1717062836469-6
+      author: matte
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: player_id
+            baseTableName: player_tournaments
+            constraintName: fk_platou_on_player
+            referencedColumnNames: id
+            referencedTableName: player
+  - changeSet:
+      id: 1717062836469-7
+      author: matte
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: tournaments_id
+            baseTableName: player_tournaments
+            constraintName: fk_platou_on_tournament
+            referencedColumnNames: id
+            referencedTableName: tournament
+
