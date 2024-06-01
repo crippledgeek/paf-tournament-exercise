@@ -1,5 +1,7 @@
 package com.paf.exercise.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Builder;
 import lombok.extern.jackson.Jacksonized;
 
@@ -11,5 +13,5 @@ import java.util.Set;
  */
 @Builder
 @Jacksonized
-public record Player(String name, Set<Tournament> tournaments) implements Serializable {
+public record Player(String name) implements Serializable {
 }

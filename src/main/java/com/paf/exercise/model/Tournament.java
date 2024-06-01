@@ -1,5 +1,7 @@
 package com.paf.exercise.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Builder;
 import lombok.Singular;
 import lombok.extern.jackson.Jacksonized;

@@ -12,8 +12,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(TournamentNotFoundException.class)
     public ProblemDetail handleTournamentNotFoundException(TournamentNotFoundException e) {
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, e.getMessage());
-        problemDetail.setTitle("Something Not Found");
-        problemDetail.setProperty("custom_property", "New Message");
+        problemDetail.setTitle("Tournament not found");
         return problemDetail;
     }
 

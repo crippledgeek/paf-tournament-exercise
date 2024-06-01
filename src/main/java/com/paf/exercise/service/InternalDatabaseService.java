@@ -7,8 +7,10 @@ import com.paf.exercise.model.Tournament;
 import com.paf.exercise.model.Tournaments;
 import com.paf.exercise.repositories.TournamentRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class InternalDatabaseService implements DatabaseService {
 
     private final TournamentRepository tournamentRepository;
