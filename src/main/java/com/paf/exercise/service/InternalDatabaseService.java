@@ -35,7 +35,7 @@ public class InternalDatabaseService implements DatabaseService {
 
     @Override
     public Tournament addTournament(Tournament tournament) {
-        return null;
+        return tournamentMapper.toDto(tournamentRepository.save(tournamentMapper.toEntity(tournament)));
     }
 
     @Override

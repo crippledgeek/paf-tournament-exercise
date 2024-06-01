@@ -4,6 +4,9 @@ import jakarta.persistence.Cacheable;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -22,7 +25,11 @@ import java.util.Set;
 @Entity
 @Table(name = "tournament")
 @Cacheable
-public class Tournament extends AbstractPersistable<Long> {
+public class Tournament {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
+    private Long id;
 
     @ManyToMany(mappedBy = "tournaments", cascade = CascadeType.PERSIST)
     @Cache(usage = org.hibernate.annotations.CacheConcurrencyStrategy.READ_WRITE, region = "player_tournaments")
