@@ -36,6 +36,9 @@ spring:
             missing_cache_strategy: create
   cache:
     cache-names: player, tournament, player_tournament,
+  sql:
+    init:
+      mode: always
 
 logging:
   level:
