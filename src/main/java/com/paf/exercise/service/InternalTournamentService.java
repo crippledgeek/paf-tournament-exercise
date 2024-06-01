@@ -2,6 +2,7 @@ package com.paf.exercise.service;
 
 import com.paf.exercise.model.Tournament;
 import com.paf.exercise.model.Tournaments;
+import com.paf.exercise.requests.AddTournamentRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,7 +26,7 @@ public class InternalTournamentService implements TournamentService {
     }
 
     @Override
-    public Tournament addTournament(Tournament tournament) {
+    public Tournament addTournament(AddTournamentRequest tournament) {
         return null;
     }
 

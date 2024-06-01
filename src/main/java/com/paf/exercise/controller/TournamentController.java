@@ -2,10 +2,13 @@ package com.paf.exercise.controller;
 
 import com.paf.exercise.model.Tournament;
 import com.paf.exercise.model.Tournaments;
+import com.paf.exercise.requests.AddTournamentRequest;
 import com.paf.exercise.service.TournamentService;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("api/tournaments")
@@ -30,6 +33,11 @@ public class TournamentController {
     @DeleteMapping("/{tournamentId}")
     public void deleteTournament(@PathVariable Long tournamentId) {
         tournamentService.deleteTournament(tournamentId);
+    }
+
+    @PostMapping
+    public Tournament addTournament(@RequestBody AddTournamentRequest tournament) {
+        return tournamentService.addTournament(tournament);
     }
 
 }
