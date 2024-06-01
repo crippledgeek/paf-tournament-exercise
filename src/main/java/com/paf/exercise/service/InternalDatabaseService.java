@@ -1,5 +1,6 @@
 package com.paf.exercise.service;
 
+import com.paf.exercise.exceptions.TournamentNotFoundException;
 import com.paf.exercise.mapper.TournamentMapper;
 import com.paf.exercise.mapper.TournamentsMapper;
 import com.paf.exercise.model.Tournament;
@@ -27,7 +28,7 @@ public class InternalDatabaseService implements DatabaseService {
     public Tournament getTournament(Long tournamentId) {
         return tournamentRepository.findById(tournamentId)
                                    .map(tournamentMapper::toDto)
-                                   .orElse(null);
+                                   .orElseThrow(()-> new TournamentNotFoundException("Tournament not found with id: " + tournamentId));
     }
 
     @Override
