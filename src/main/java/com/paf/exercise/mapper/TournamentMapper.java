@@ -21,6 +21,7 @@ public interface TournamentMapper {
 
     com.paf.exercise.model.Tournament toDto(Tournament tournament);
     List<com.paf.exercise.model.Tournament> toDtos(List<Tournament> tournaments);
+    Tournament toEntity(com.paf.exercise.requests.AddTournamentRequest addTournamentRequest);
 
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)

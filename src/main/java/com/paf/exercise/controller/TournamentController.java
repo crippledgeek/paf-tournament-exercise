@@ -36,8 +36,8 @@ public class TournamentController {
     }
 
     @PostMapping
-    public Tournament addTournament(@RequestBody AddTournamentRequest tournament) {
-        return tournamentService.addTournament(tournament);
+    public Tournament addTournament(@RequestBody AddTournamentRequest request) {
+        return tournamentService.addTournament(request);
     }
 
 }

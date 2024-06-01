@@ -1,5 +1,6 @@
 package com.paf.exercise.service;
 
+import com.paf.exercise.mapper.AddTournamentRequestMapper;
 import com.paf.exercise.model.Tournament;
 import com.paf.exercise.model.Tournaments;
 import com.paf.exercise.requests.AddTournamentRequest;
@@ -27,7 +28,7 @@ public class InternalTournamentService implements TournamentService {
 
     @Override
     public Tournament addTournament(AddTournamentRequest tournament) {
-        return null;
+        return databaseService.addTournament(AddTournamentRequestMapper.map(tournament));
     }
 
     @Override
