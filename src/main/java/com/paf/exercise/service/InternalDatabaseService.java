@@ -74,4 +74,35 @@ public class InternalDatabaseService implements DatabaseService {
     public Player addPlayer(Player player) {
         return playerMapper.toDto(playerRepository.save(playerMapper.toEntity(player)));
     }
+
+    @Override
+    public void deletePlayer(Long playerId) {
+        playerRepository.deleteById(playerId);
+    }
+
+    @Override
+    public void removePlayerFromTournament(Long playerId, Long tournamentId) {
+        playerRepository.deleteByIdAndTournaments_Id(playerId, tournamentId);
+
+    }
+
+    @Override
+    public void addPlayerToTournament(Long playerId, Long tournamentId) {
+        com.paf.exercise.entities.Player player = findPlayerById(playerId);
+        com.paf.exercise.entities.Tournament tournament = findTournamentById(tournamentId);
+
+        player.getTournaments().add(tournament);
+        tournament.getPlayers().add(player);
+        playerRepository.save(player);
+    }
+
+    private com.paf.exercise.entities.Player findPlayerById(Long playerId) {
+        return playerRepository.findById(playerId)
+                               .orElseThrow(() -> new PlayerNotFoundException("Player not found with id: " + playerId));
+    }
+
+    private com.paf.exercise.entities.Tournament findTournamentById(Long tournamentId) {
+        return tournamentRepository.findById(tournamentId)
+                                   .orElseThrow(() -> new TournamentNotFoundException("Tournament not found with id: " + tournamentId));
+    }
 }

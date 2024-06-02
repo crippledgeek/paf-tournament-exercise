@@ -39,16 +39,18 @@ public class InternalPlayerService implements PlayerService {
 
     @Override
     public void deletePlayer(Long playerId) {
+        databaseService.deletePlayer(playerId);
 
     }
 
     @Override
     public void addPlayerToTournament(Long playerId, Long tournamentId) {
+        databaseService.addPlayerToTournament(playerId, tournamentId);
 
     }
 
     @Override
     public void removePlayerFromTournament(Long playerId, Long tournamentId) {
-
+        databaseService.removePlayerFromTournament(playerId, tournamentId);
     }
 }

@@ -16,4 +16,11 @@ public interface DatabaseService {
     Player getPlayer(Long playerId);
 
     Player addPlayer(Player player);
+
+    void deletePlayer(Long playerId);
+
+    void removePlayerFromTournament(Long playerId, Long tournamentId);
+
+    void addPlayerToTournament(Long playerId, Long tournamentId);
+
 }
