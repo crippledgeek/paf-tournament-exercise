@@ -69,4 +69,9 @@ public class InternalDatabaseService implements DatabaseService {
                                .map(playerMapper::toDto)
                                .orElseThrow(()-> new PlayerNotFoundException("Player not found with id: " + playerId));
     }
+
+    @Override
+    public Player addPlayer(Player player) {
+        return playerMapper.toDto(playerRepository.save(playerMapper.toEntity(player)));
+    }
 }

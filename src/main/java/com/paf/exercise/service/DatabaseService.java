@@ -14,4 +14,6 @@ public interface DatabaseService {
 
     Players getAllPlayers();
     Player getPlayer(Long playerId);
+
+    Player addPlayer(Player player);
 }

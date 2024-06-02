@@ -1,5 +1,7 @@
 package com.paf.exercise.service;
 
+import com.paf.exercise.mapper.AddPlayerRequestMapper;
+import com.paf.exercise.mapper.AddTournamentRequestMapper;
 import com.paf.exercise.model.Player;
 import com.paf.exercise.model.Players;
 import com.paf.exercise.requests.AddPlayerRequest;
@@ -27,7 +29,7 @@ public class InternalPlayerService implements PlayerService {
 
     @Override
     public Player addPlayer(AddPlayerRequest request) {
-        return null;
+        return databaseService.addPlayer(AddPlayerRequestMapper.map(request));
     }
 
     @Override
