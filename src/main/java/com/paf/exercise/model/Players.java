@@ -5,8 +5,8 @@ import java.util.List;
 public record Players(List<Player> players){
     private static final List<Player> EMPTY_LIST = List.of();
 
-    public static Players from(List<Player> locations) {
-        return new Players(locations);
+    public static Players from(List<Player> players) {
+        return new Players(players);
     }
 
     public boolean isEmpty() {

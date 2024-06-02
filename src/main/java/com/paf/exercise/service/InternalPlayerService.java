@@ -1,0 +1,51 @@
+package com.paf.exercise.service;
+
+import com.paf.exercise.model.Player;
+import com.paf.exercise.model.Players;
+import org.springframework.stereotype.Service;
+
+@Service
+public class InternalPlayerService implements PlayerService {
+
+    private final DatabaseService databaseService;
+
+    public InternalPlayerService(DatabaseService databaseService) {
+        this.databaseService = databaseService;
+    }
+
+
+    @Override
+    public Players getAllPlayers() {
+        return databaseService.getAllPlayers();
+    }
+
+    @Override
+    public Player getPlayer(Long playerId) {
+        return databaseService.getPlayer(playerId);
+    }
+
+    @Override
+    public Player addPlayer(Player player) {
+        return null;
+    }
+
+    @Override
+    public Player updatePlayer(int player_id, Player player) {
+        return null;
+    }
+
+    @Override
+    public void deletePlayer(Long playerId) {
+
+    }
+
+    @Override
+    public void addPlayerToTournament(Long playerId, Long tournamentId) {
+
+    }
+
+    @Override
+    public void removePlayerFromTournament(Long playerId, Long tournamentId) {
+
+    }
+}

@@ -34,12 +34,13 @@ spring:
             provider: org.ehcache.jsr107.EhcacheCachingProvider
             default_cache_concurrency_strategy: read-write
             missing_cache_strategy: create
+    defer-datasource-initialization: false
   cache:
     cache-names: player, tournament, player_tournament,
 
   sql:
     init:
-      mode: never
+      mode: always
 
 logging:
   level:
@@ -48,3 +49,9 @@ logging:
         org.hibernate.stat: trace
         org.hibernate.SQL_SLOW: trace
         org.hibernate.cache: trace
+
+        liquibase:
+            change-log: trace
+            logger: trace
+            logging: trace
+            sql: trace

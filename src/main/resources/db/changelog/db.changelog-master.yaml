@@ -7,7 +7,7 @@ databaseChangeLog:
         - createSequence:
             incrementBy: 50
             sequenceName: player_seq
-            startValue: 1
+            startValue: 4
   - changeSet:
       id: 1717062836469-2
       author: matte
@@ -16,7 +16,7 @@ databaseChangeLog:
         - createSequence:
             incrementBy: 50
             sequenceName: tournament_seq
-            startValue: 1
+            startValue: 4
   - changeSet:
       id: 1717062836469-3
       author: matte

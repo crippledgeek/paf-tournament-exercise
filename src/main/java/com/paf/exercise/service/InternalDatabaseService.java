@@ -1,10 +1,16 @@
 package com.paf.exercise.service;
 
+import com.paf.exercise.exceptions.PlayerNotFoundException;
 import com.paf.exercise.exceptions.TournamentNotFoundException;
+import com.paf.exercise.mapper.PlayerMapper;
+import com.paf.exercise.mapper.PlayersMapper;
 import com.paf.exercise.mapper.TournamentMapper;
 import com.paf.exercise.mapper.TournamentsMapper;
+import com.paf.exercise.model.Player;
+import com.paf.exercise.model.Players;
 import com.paf.exercise.model.Tournament;
 import com.paf.exercise.model.Tournaments;
+import com.paf.exercise.repositories.PlayerRepository;
 import com.paf.exercise.repositories.TournamentRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,10 +21,14 @@ public class InternalDatabaseService implements DatabaseService {
 
     private final TournamentRepository tournamentRepository;
     private final TournamentMapper tournamentMapper;
+    private final PlayerRepository playerRepository;
+    private final PlayerMapper playerMapper;
 
-    public InternalDatabaseService(TournamentRepository tournamentRepository, TournamentMapper tournamentMapper) {
+    public InternalDatabaseService(TournamentRepository tournamentRepository, TournamentMapper tournamentMapper, PlayerRepository playerRepository, PlayerMapper playerMapper) {
         this.tournamentRepository = tournamentRepository;
         this.tournamentMapper = tournamentMapper;
+        this.playerRepository = playerRepository;
+        this.playerMapper = playerMapper;
     }
 
     @Override
@@ -46,5 +56,17 @@ public class InternalDatabaseService implements DatabaseService {
     @Override
     public void deleteTournament(Long tournamentId) {
         tournamentRepository.deleteById(tournamentId);
+    }
+
+    @Override
+    public Players getAllPlayers() {
+        return PlayersMapper.map(playerMapper.toDtos(playerRepository.findAll()));
+    }
+
+    @Override
+    public Player getPlayer(Long playerId) {
+        return playerRepository.findById(playerId)
+                               .map(playerMapper::toDto)
+                               .orElseThrow(()-> new PlayerNotFoundException("Player not found with id: " + playerId));
     }
 }

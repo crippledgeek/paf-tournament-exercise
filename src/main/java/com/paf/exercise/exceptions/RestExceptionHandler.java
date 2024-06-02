@@ -16,4 +16,11 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         return problemDetail;
     }
 
+    @ExceptionHandler(PlayerNotFoundException.class)
+    public ProblemDetail handlePlayerNotFoundException(PlayerNotFoundException e) {
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, e.getMessage());
+        problemDetail.setTitle("Player not found");
+        return problemDetail;
+    }
+
 }
