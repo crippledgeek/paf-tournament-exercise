@@ -2,6 +2,7 @@ package com.paf.exercise.service;
 
 import com.paf.exercise.model.Player;
 import com.paf.exercise.model.Players;
+import com.paf.exercise.requests.AddPlayerRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,7 +26,7 @@ public class InternalPlayerService implements PlayerService {
     }
 
     @Override
-    public Player addPlayer(Player player) {
+    public Player addPlayer(AddPlayerRequest request) {
         return null;
     }
 
