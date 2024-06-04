@@ -1,7 +1,6 @@
 package com.paf.exercise.repositories;
 
 import com.paf.exercise.entities.Tournament;
-import com.paf.exercise.exceptions.TournamentNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
